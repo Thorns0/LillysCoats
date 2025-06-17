@@ -4,6 +4,10 @@
  */
 package lillyscoats;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author adg19f
@@ -126,6 +130,13 @@ public class login extends javax.swing.JFrame {
         if(username.equals("admin") && password.equals("123")){
             UserEntry f2 = new UserEntry(username);
             f2.setVisible(true);
+            Data d1 = new Data();
+            try {
+                Data.userData=d1.getData("Users.txt");
+            } catch (IOException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
