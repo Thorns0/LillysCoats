@@ -55,6 +55,7 @@ public class UserEntry extends javax.swing.JFrame {
         txtemail = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         labID = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -97,6 +98,15 @@ public class UserEntry extends javax.swing.JFrame {
         labID.setForeground(new java.awt.Color(255, 204, 0));
         labID.setText("User ID: ");
 
+        jButton2.setBackground(new java.awt.Color(0, 255, 204));
+        jButton2.setForeground(new java.awt.Color(255, 153, 153));
+        jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -118,9 +128,11 @@ public class UserEntry extends javax.swing.JFrame {
                             .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(labID, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jButton1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton2)))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,9 +152,11 @@ public class UserEntry extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(51, 51, 51))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,6 +190,12 @@ public class UserEntry extends javax.swing.JFrame {
             txtemail.setText("");
             int id = u1.getID();
             labID.setText("User ID: "+id);
+            Data d1 = new Data();
+            try {
+                Data.userData=d1.getData("Users.txt");
+            } catch (IOException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (IOException ex) {
             Logger.getLogger(UserEntry.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -186,6 +206,21 @@ public class UserEntry extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String name = txtname.getText();
+        Boolean Found = true;
+        for(int i=0; i<Data.userData.length; i++){
+            if(Data.userData[i][0].equals(name)){
+                JOptionPane.showMessageDialog(rootPane, "Found");
+                txtemail.setText(Data.userData[i][1]);
+                Found = false;
+            }
+        }
+            if(Found){
+                JOptionPane.showMessageDialog(rootPane, "Not found");
+            }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,6 +259,7 @@ public class UserEntry extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
