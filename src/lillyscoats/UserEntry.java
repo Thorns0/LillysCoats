@@ -242,7 +242,6 @@ public class UserEntry extends javax.swing.JFrame {
         int y =0;
         for(int i=0; i<Data.userData.length; i++){
             if(Data.userData[i][0].equals(name)){
-                JOptionPane.showMessageDialog(rootPane, "Found");
                 searchResults.setValueAt(Data.userData[i][0], y, 0);
                 searchResults.setValueAt(Data.userData[i][1], y, 1);
                 y++;
