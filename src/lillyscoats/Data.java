@@ -19,7 +19,7 @@ public class Data {
     
     public String[][] getData(String filename) throws IOException{
         int lines = u1.countline(filename);
-        String [][] localArr = new String[lines][2];
+        String [][] localArr = new String[lines][3];
         FileReader fr = new FileReader(filename);
         BufferedReader br = new BufferedReader(fr);
         String line;
