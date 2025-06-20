@@ -52,4 +52,15 @@ public class Util {
         }
         return 1;
         }
+    
+    public int getBookID(){
+        try {
+            int id = countline("Booking.txt");
+            id++;
+            return id;
+        } catch (IOException ex) {
+            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 1;
+        }
 }

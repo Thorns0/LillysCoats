@@ -4,6 +4,11 @@
  */
 package lillyscoats;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -195,7 +200,32 @@ public class Booking extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        FileWriter fw = null;
+        try {
+            Util u1 = new Util();
+            String date = txtDate.getText();
+            String sTime = txtStime.getText();
+            String eTime = txtEtime.getText();
+            int id = u1.getBookID();
+            int cust = ComCust.getSelectedIndex()+1;
+            fw = new FileWriter("Booking.txt",true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.append(id+","+date+","+sTime+","+eTime+","+cust);
+            bw.newLine();
+            bw.close();
+            fw.close();
+            txtDate.setText("");
+            txtStime.setText("");
+            txtEtime.setText("");
+        } catch (IOException ex) {
+            Logger.getLogger(Booking.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Booking.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ComCustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComCustActionPerformed
