@@ -42,20 +42,9 @@ public class Util {
         
     }
     
-    public int getID(){
+    public int getID(String file){
         try {
-            int id = countline("Users.txt");
-            id++;
-            return id;
-        } catch (IOException ex) {
-            Logger.getLogger(Util.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 1;
-        }
-    
-    public int getBookID(){
-        try {
-            int id = countline("Booking.txt");
+            int id = countline(file);
             id++;
             return id;
         } catch (IOException ex) {

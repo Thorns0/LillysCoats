@@ -30,7 +30,7 @@ public class UserEntry extends javax.swing.JFrame {
         initComponents();
         String content = labwhousing.getText();
         labwhousing.setText(content+username);
-        int id = u1.getID();
+        int id = u1.getID("User.txt");
         String idContent = labID.getText();
         labID.setText(idContent+id);
     }
@@ -223,7 +223,7 @@ public class UserEntry extends javax.swing.JFrame {
         FileWriter fw = null;
         Util u1 = new Util();
         try {
-            int id = u1.getID();
+            int id = u1.getID("User.txt");
             String name = txtname.getText();
             String email = txtemail.getText();
             fw = new FileWriter("Users.txt", true);
