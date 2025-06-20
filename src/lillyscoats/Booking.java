@@ -207,7 +207,8 @@ public class Booking extends javax.swing.JFrame {
             String sTime = txtStime.getText();
             String eTime = txtEtime.getText();
             int id = u1.getID("Booking.txt");
-            int cust = ComCust.getSelectedIndex()+1;
+            String custermer = ComCust.getSelectedItem().toString();
+            String cust = custermer.split(":")[1];
             fw = new FileWriter("Booking.txt",true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.append(id+","+date+","+sTime+","+eTime+","+cust);
